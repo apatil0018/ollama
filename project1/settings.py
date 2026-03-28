@@ -76,12 +76,27 @@ WSGI_APPLICATION = 'project1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default':{
+        'ENGINE':'mssql',                    # Must be "mssql"
+        'NAME':'ollama_db',                       # DB name "test"
+        "USER": "sa",
+        "PASSWORD": "Ajit@123",
+        'HOST':'18.189.219.118', # <server>\<instance>
+        'PORT':'',                           # Keep it blank
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+        },
     }
 }
+
 
 
 # Password validation
@@ -124,6 +139,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+STATIC_ROOT = '/home/ubuntu/ollama/static/'
+
 
 
 # REST_FRAMEWORK = {
